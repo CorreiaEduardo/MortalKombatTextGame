@@ -6,11 +6,13 @@ import java.util.List;
 /**
  * @author Eduardo C
  */
-public class CharBase {
+public abstract class CharBase {
     protected boolean isChoosen;
     protected String name;
     protected int hp;
     protected int stamina;
+    int defense;
+    ArrayList<Move> moveList;
     public int kickGetDamage(){
         return 10;
     }
@@ -50,15 +52,20 @@ public class CharBase {
         this.stamina = stamina;
     }
     
-    public ArrayList<Integer> moveList(){
-        ArrayList<Integer> moveList = new ArrayList<Integer>();
-        return moveList;
-    }
-    public ArrayList<String> getMoveNames(){
-        ArrayList<String> names = new ArrayList<String>();
-        return names;
-    }
+    public abstract ArrayList<Move> getMoveList();
+    
+    //public abstract ArrayList<String> getMoveNames();
+    
     public int GetDefenseSkill(){
         return 0;
+    }
+    
+    public ArrayList<String> getMoveNames(){
+        ArrayList<String> moveNames = new ArrayList<>();
+        for(Move node : this.getMoveList()){
+            moveNames.add(node.getName());
+        }
+        
+        return moveNames;
     }
 }

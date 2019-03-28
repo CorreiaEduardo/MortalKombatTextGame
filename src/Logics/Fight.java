@@ -1,6 +1,6 @@
 package Logics;
 
-import Characters.CharBase;
+import Characters.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -29,6 +29,7 @@ public class Fight {
             int choice = s.nextInt();
             int nextMove = 0;
             int opMove = getRandomEvent();
+            System.out.println(opMove);
             int i = 0;
             if (choice == 1) {
                 for (i = 0; i < this.player.getMoveNames().size(); i++) {
@@ -36,7 +37,7 @@ public class Fight {
                 }
                 nextMove = s.nextInt();
                 i = nextMove;
-                nextMove = this.player.moveList().get(nextMove-1);
+                nextMove = this.player.getMoveList().get(nextMove-1).execute(player);
                 System.out.println(nextMove);
             }else {
                 nextMove = this.player.GetDefenseSkill();
@@ -82,7 +83,10 @@ public class Fight {
         return null;
     }
     public int getRandomEvent(){ 
-        ArrayList<Integer> list = opponent.moveList();
+        ArrayList<Integer> list = new ArrayList<>();
+        for(Move node : this.opponent.getMoveList()){
+            list.add(node.getDamage());
+        }
         Random rand = new Random(); 
         return list.get(rand.nextInt(list.size()));
     } 

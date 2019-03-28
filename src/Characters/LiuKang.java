@@ -7,45 +7,30 @@ import java.util.List;
  * @author Eduardo C.
  */
 public class LiuKang extends CharBase{
+    Move bicycleKick;
+    Move flyingDragonKick;
+    
     public LiuKang(boolean b){
+        this.defense = -15;
         this.isChoosen = b;
         this.name = "Liu Kang";
         this.hp = 100;
         this.stamina = 100;
+        this.moveList = new ArrayList<Move>();
+        this.bicycleKick = new Move("Bicycle Kick",35,15);
+        this.flyingDragonKick = new Move("Flying Dragon Kick",15,5);
+        this.moveList.add(bicycleKick);
+        this.moveList.add(flyingDragonKick);
     }
-    public int bicycleKickGetDamage(){
-        if (this.stamina - 15 >= 0) {
-            this.stamina -= 15;
-            return 85;
-        } else {
-            return 0;
-        }
-    }
-    public int flayingDragonKickGetDamage(){
-        if (this.stamina - 5 >= 0) {
-            this.stamina -= 5;
-            return 15;
-        } else {
-            return 0;
-        }
-    }
+    
     @Override
     public int GetDefenseSkill(){
-        return -15;
+        return this.defense;
     }
+    
     @Override
-    public ArrayList<Integer> moveList(){
-        ArrayList<Integer> moveList = new ArrayList<Integer>();
-        moveList.add(bicycleKickGetDamage());
-        moveList.add(flayingDragonKickGetDamage());
-        moveList.add(GetDefenseSkill());
-        return moveList;
+    public ArrayList<Move> getMoveList(){
+        return this.moveList;
     }
-    @Override
-    public ArrayList<String> getMoveNames(){
-        ArrayList<String> names = new ArrayList<String>();
-        names.add("Bicycle Kick");
-        names.add("Flaying Dragon Kick");
-        return names;
-    }
+    
 }
