@@ -17,7 +17,10 @@ public class Fight {
     }
     public CharBase start(){
         int round = 1;
-        while (player.getHp() != 0 || opponent.getHp() !=0) {               
+        while (player.getHp() > 0 || opponent.getHp() > 0) {
+            if (player.getHp() < 0 || opponent.getHp() < 0) {
+                break;
+            }
             System.out.println("--- CONTROLES ---");
             System.out.println("1 -> Atacar.");
             System.out.println("2 -> Defender.");
@@ -26,11 +29,13 @@ public class Fight {
             int choice = s.nextInt();
             int nextMove = 0;
             int opMove = getRandomEvent();
+            int i = 0;
             if (choice == 1) {
-                for (int i = 0; i < this.player.getMoveNames().size(); i++) {
+                for (i = 0; i < this.player.getMoveNames().size(); i++) {
                     System.out.println((i+1)+" -> "+this.player.getMoveNames().get(i));
                 }
                 nextMove = s.nextInt();
+                i = nextMove;
                 nextMove = this.player.moveList().get(nextMove-1);
                 System.out.println(nextMove);
             }else {
@@ -39,7 +44,7 @@ public class Fight {
             if (nextMove > 0) { // PLAYER ATTACK
                 if (opMove>0) { // OPPONENT ATTACK
                     if (nextMove>opMove) { // DAMAGE CALCULATION
-                        System.out.println("Player atacou e bot atacou, e player ganhou troca");
+                        System.out.println("Player: HAYAAAAAA! "+this.player.getMoveNames().get(i-1)+"\nBOT: UGHH");
                         this.opponent.setHp(this.opponent.getHp()-(nextMove-opMove));
                     } else {
                         System.out.println("Player atacou e bot atacou, mas player perdeu troca");

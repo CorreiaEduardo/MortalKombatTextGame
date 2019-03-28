@@ -16,7 +16,7 @@ public class LiuKang extends CharBase{
     public int bicycleKickGetDamage(){
         if (this.stamina - 15 >= 0) {
             this.stamina -= 15;
-            return 35;
+            return 85;
         } else {
             return 0;
         }

@@ -19,7 +19,7 @@ public class CharBase {
     }
 
     public boolean isIsChoosen() {
-        return isChoosen;
+        return this.isChoosen;
     }
 
     public void setIsChoosen(boolean isChoosen) {
@@ -27,7 +27,7 @@ public class CharBase {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -35,7 +35,7 @@ public class CharBase {
     }
 
     public int getHp() {
-        return hp;
+        return this.hp;
     }
 
     public void setHp(int hp) {
@@ -43,7 +43,7 @@ public class CharBase {
     }
 
     public int getStamina() {
-        return stamina;
+        return this.stamina;
     }
 
     public void setStamina(int stamina) {
