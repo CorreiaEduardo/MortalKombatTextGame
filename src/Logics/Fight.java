@@ -65,10 +65,13 @@ public class Fight {
                     System.out.println("??");
                 }
             }
-            System.out.println("### ROUND "+round+" ###");
-            System.out.println("HP restante "+this.player.getHp());
+            System.out.println("                   ### ROUND "+round+" ###");
+            System.out.print("Seu HP: "+this.player.getHp());
+            System.out.print("                            ");
             System.out.println("HP do inimigo "+this.opponent.getHp());
-            
+            //STAMINA RECOVERY
+            player.setStamina(player.getStamina()+5);
+            opponent.setStamina(opponent.getStamina()+5);
             round++;
         }
         return null;
