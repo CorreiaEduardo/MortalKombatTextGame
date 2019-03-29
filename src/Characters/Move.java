@@ -14,8 +14,12 @@ public class Move {
         this.staminaCost = s;
     }
     public int execute(CharBase c) {
-        c.setStamina(c.getStamina()-this.getStaminaCost());
-        return this.damage;
+        if (c.getStamina()-this.getStaminaCost() > 0) {
+            c.setStamina(c.getStamina()-this.getStaminaCost());
+            return this.damage;
+        } else {
+            return 0;
+        }
     }
     
     public int getDamage() {

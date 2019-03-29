@@ -28,8 +28,8 @@ public class Fight {
             Scanner s = new Scanner(System.in);
             int choice = s.nextInt();
             int nextMove = 0;
-            int opMove = getRandomEvent();
-            System.out.println(opMove);
+            Move opMove = this.opponent.getMoveList().get(getRandomEvent());
+            int opMoveDamage = opMove.getDamage();
             int i = 0;
             if (choice == 1) {
                 for (i = 0; i < this.player.getMoveNames().size(); i++) {
@@ -43,39 +43,39 @@ public class Fight {
                 nextMove = this.player.getDefenseSkill().execute(player);
             }
             if (nextMove > 0) { // PLAYER ATTACK
-                if (opMove>0) { // OPPONENT ATTACK
-                    if (nextMove>opMove) { // DAMAGE CALCULATION
-                        System.out.println("Player: HAYAAAAAA! "+this.player.getMoveNames().get(i-1)+"\nBOT: UGHH");
-                        this.opponent.setHp(this.opponent.getHp()-(nextMove-opMove));
+                if (opMoveDamage>0) { // OPPONENT ATTACK
+                    if (nextMove>opMoveDamage) { // DAMAGE CALCULATION
+                        System.out.println("Player: HAYAAAAAA! "+this.player.getMoveNames().get(i-1)+"\nBOT WAS CASTING "+opMove.getName()+" BUT YOU MOVED FASTER: UGHH");
+                        this.opponent.setHp(this.opponent.getHp()-(nextMove-opMoveDamage));
                     } else {
-                        System.out.println("Player atacou e bot atacou, mas player perdeu troca");
-                        this.player.setHp(this.player.getHp()-(opMove-nextMove));
+                        System.out.println("Player WAS CASTING "+this.player.getMoveNames().get(i-1)+"\nBUT BOT MOVED FASTER AND HIT "+opMove.getName()+": YAAAAAAAAAAAAAAAAAAAAAAH");
+                        this.player.setHp(this.player.getHp()-(opMoveDamage-nextMove));
                     }
                 } else {
-                    opMove*=-1;
-                    if (opMove<nextMove) {
-                        System.out.println("Player atacou e bot defendeu");
-                        this.opponent.setHp(this.opponent.getHp()-(nextMove-opMove));
+                    opMoveDamage*=-1;
+                    if (opMoveDamage<nextMove) {
+                        System.out.println("Player: HAYAAAAAA! "+this.player.getMoveNames().get(i-1)+"\nBOT USED "+opMove.getName()+" TO TAKE LESS DAMAGE: UGHH! THAT WAS CLOSE!");
+                        this.opponent.setHp(this.opponent.getHp()-(nextMove-opMoveDamage));
                     }else{
-                        System.out.println("bot absorveu dano");
+                        System.out.println("Player: HAYAAAAAA! "+this.player.getMoveNames().get(i-1)+"\nBOT USED "+opMove.getName()+" TO AVOID THE ATTACK: IS THAT ALL YOU GOT?!"); // BOT ABSORVER DANO.
                     }
                 }
             } else {
-                if (opMove > 0) {// OPPONENT ATTACK
+                if (opMoveDamage > 0) {// OPPONENT ATTACK
                     nextMove*=-1;
-                    System.out.println("Player defendeu e bot atacou");
-                    if (nextMove<opMove) {
-                        this.player.setHp(this.player.getHp()-(opMove-nextMove));
+                    System.out.println("Player USED"+this.player.getMoveNames().get(i-1)+" TO TAKE LESS DAMAGE: UGH!\n HOWEVER BOT USED "+opMove.getName()+" AND HIT SOME DAMAGE.");
+                    if (nextMove<opMoveDamage) {
+                        this.player.setHp(this.player.getHp()-(opMoveDamage-nextMove));
                     }
                 } else {
-                    System.out.println("??");
+                    System.out.println("YOU GUYS ARE STARING EACH OTHER.");
                 }
             }
             System.out.println("                   ### ROUND "+round+" ###");
             System.out.print("Seu HP: "+this.player.getHp());
             System.out.print("                            ");
             System.out.println("HP do inimigo "+this.opponent.getHp());
-            System.out.print("Sua STAMINA: "+this.player.getStamina());
+            System.out.println("Sua STAMINA: "+this.player.getStamina());
             //STAMINA RECOVERY
             player.setStamina(player.getStamina()+5);
             opponent.setStamina(opponent.getStamina()+5);
@@ -90,8 +90,10 @@ public class Fight {
     }
     public int getRandomEvent(){ 
         ArrayList<Integer> list = new ArrayList<>();
+        int i=0;
         for(Move node : this.opponent.getMoveList()){
-            list.add(node.getDamage());
+            list.add(i);
+            i++;
         }
         Random rand = new Random(); 
         return list.get(rand.nextInt(list.size()));

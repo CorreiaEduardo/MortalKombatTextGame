@@ -18,9 +18,9 @@ public class Raiden extends CharBase{
         this.hp = 100;
         this.stamina = 100;
         this.moveList = new ArrayList<>();
-        this.lightningBolt = new Move("Lightning Bolt", 25,10);
-        this.torpedo = new Move("Torpedo", 30,12);
-        this.teleport = new Move("Teleport", -20,0);
+        this.lightningBolt = new Move("Lightning Bolt", 30,15);
+        this.torpedo = new Move("Torpedo", 20,15);
+        this.teleport = new Move("Teleport", -20,5);
         this.moveList.add(lightningBolt);
         this.moveList.add(torpedo);
         this.moveList.add(teleport);

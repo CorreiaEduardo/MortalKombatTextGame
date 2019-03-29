@@ -18,7 +18,7 @@ public class LiuKang extends CharBase{
         this.hp = 100;
         this.stamina = 100;
         this.moveList = new ArrayList<Move>();
-        this.bicycleKick = new Move("Bicycle Kick",35,15);
+        this.bicycleKick = new Move("Bicycle Kick",25,15);
         this.flyingDragonKick = new Move("Flying Dragon Kick",15,5);
         this.parry = new Move("Parry",-15,0);
         this.moveList.add(bicycleKick);
