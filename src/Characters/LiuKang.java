@@ -9,6 +9,7 @@ import java.util.List;
 public class LiuKang extends CharBase{
     Move bicycleKick;
     Move flyingDragonKick;
+    Move parry;
     
     public LiuKang(boolean b){
         this.defense = -15;
@@ -19,13 +20,14 @@ public class LiuKang extends CharBase{
         this.moveList = new ArrayList<Move>();
         this.bicycleKick = new Move("Bicycle Kick",35,15);
         this.flyingDragonKick = new Move("Flying Dragon Kick",15,5);
+        this.parry = new Move("Parry",-15,0);
         this.moveList.add(bicycleKick);
         this.moveList.add(flyingDragonKick);
+        this.moveList.add(parry);
     }
     
-    @Override
-    public int GetDefenseSkill(){
-        return this.defense;
+    public Move getDefenseSkill(){
+        return this.parry;
     }
     
     @Override

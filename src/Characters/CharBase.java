@@ -56,9 +56,7 @@ public abstract class CharBase {
     
     //public abstract ArrayList<String> getMoveNames();
     
-    public int GetDefenseSkill(){
-        return 0;
-    }
+    public abstract Move getDefenseSkill();
     
     public ArrayList<String> getMoveNames(){
         ArrayList<String> moveNames = new ArrayList<>();

@@ -9,6 +9,7 @@ import java.util.List;
 public class Raiden extends CharBase{
     Move lightningBolt;
     Move torpedo;
+    Move teleport;
     
     public Raiden(boolean b){
         this.defense = -20;
@@ -19,16 +20,16 @@ public class Raiden extends CharBase{
         this.moveList = new ArrayList<>();
         this.lightningBolt = new Move("Lightning Bolt", 25,10);
         this.torpedo = new Move("Torpedo", 30,12);
+        this.teleport = new Move("Teleport", -20,0);
         this.moveList.add(lightningBolt);
         this.moveList.add(torpedo);
+        this.moveList.add(teleport);
         
     }
     
-    @Override
-    public int GetDefenseSkill(){
-        return this.defense;
+    public Move getDefenseSkill(){
+        return this.teleport;
     }
-    
     
     @Override
     public ArrayList<Move> getMoveList(){

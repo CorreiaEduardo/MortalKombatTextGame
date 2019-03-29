@@ -6,7 +6,7 @@ package Characters;
 public class Move {
     private String name;
     private String description;
-    private int damage;
+    private int damage; // OR DAMAGE REDUCTION
     private int staminaCost;
     public Move(String n, int d, int s){
         this.name = n;

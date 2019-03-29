@@ -40,7 +40,7 @@ public class Fight {
                 nextMove = this.player.getMoveList().get(nextMove-1).execute(player);
                 System.out.println(nextMove);
             }else {
-                nextMove = this.player.GetDefenseSkill();
+                nextMove = this.player.getDefenseSkill().execute(player);
             }
             if (nextMove > 0) { // PLAYER ATTACK
                 if (opMove>0) { // OPPONENT ATTACK
@@ -75,12 +75,18 @@ public class Fight {
             System.out.print("Seu HP: "+this.player.getHp());
             System.out.print("                            ");
             System.out.println("HP do inimigo "+this.opponent.getHp());
+            System.out.print("Sua STAMINA: "+this.player.getStamina());
             //STAMINA RECOVERY
             player.setStamina(player.getStamina()+5);
             opponent.setStamina(opponent.getStamina()+5);
             round++;
         }
         return null;
+    }
+    public void test(){
+        for (int i = 0; i < 10; i++) {
+            System.out.println(getRandomEvent());
+        }
     }
     public int getRandomEvent(){ 
         ArrayList<Integer> list = new ArrayList<>();

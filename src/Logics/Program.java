@@ -24,6 +24,7 @@ public class Program {
                 Raiden opponent = new Raiden(false);
                 Fight newFight = new Fight(choosen, opponent);
                 newFight.start();
+                //newFight.test();
         }else if(charChoosen == 2){
             System.out.println("### ESCOLHA SEU OPONENTE:");
             System.out.println("1 -> Liu Kang");
